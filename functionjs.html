@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    <script>
+        // function: -vlock of codes, designed to perform specific task
+        // types of function - with parameter, without parameter and default parameter
+        // normal function 
+    //     function demo(){
+
+    //         console.log("HELLO JS");     
+    //     }
+    //     function demo1(text){
+    //         console.log("Hello"+ text);
+    //     }
+    //     demo1("React");
+    //     // function with default parameter 
+    //     function add(a,b){
+    //         var num1=a;
+    //         var num2=b;
+    //         var res=num1+num2;
+    //         console.log("Aditional of two number is" + res);
+    //     }
+    //     add(2,9);
+
+    //     // synchronus and asynchronus
+    //     function cal(){
+    //         function add(a,b){
+    //             console.log("aditional is" + (a+b));
+    //         }
+    //         function sub(x,y){
+    //             console.log("Substraction is" + (x-y));
+    //         }
+    //         function mul(p,q){
+    //             console.log("Multiplication is" + (p*q));
+    //         }
+    //         mul(3,4)
+    //         sub(4,5)
+    //         add(4,7)
+    //     }
+    //     cal();
+    //     // Anonyomous function
+    //    let msg=function(){ /*variable ko function assign kar diya */
+    //        console.log("Hello ABES");
+    //     }
+    //     msg();
+    //     // short code for above function i.e. arrow function
+
+    //     let msg1=()=>console.log("Hello React");
+
+    //     // arrow function with multiple lines
+    //     let msg2=(age)=>{
+    //         if(age>=18){
+    //             console.log("Valid age");
+    //         }
+    //     }
+    //    msg2(23);
+        // call back function
+        function cal(a,b,callback){
+        var num1=a;
+        console.log("First number is " + num1);
+        var num2=b;
+        console.log("Second number is "+ num2);
+        var res=num1+num2;
+        callback(res);
+        }
+        function display(res){
+            console.log("Reasult is " + res);
+        }
+        cal(12,20,display);
+
+        // callback using set timeout API
+        function greeting(){
+        document.writeln("Hello Students");
+
+        }
+        function loading(){
+            document.writeln("Data loading.....");
+        }
+        loading();
+        setTimeout(greeting, 2000);
+        //  Javascript Promises: Javascript Promises were created to make asynchronous Javascript easier to use.
+        //  Promises Stages.........
+        //  Pending - operation started(not finished)
+        //  rejected - operations failed
+        //  fulfillied->operation completed 
+         let promise=new Promise(function(resolve,reject){
+             let myAge =23;
+            if(myAge>=18){
+               resolve("Valid age");
+            }
+           else{
+              reject("wait for next year");
+            }
+         });
+         promise.then(result=>console.log(result)).catch
+         (error=>console.log(error));
+        //  async and await 
+        //  fetch api
+         async function userData(){
+            let userResponse=await fetch('https://fakestoreapi.com/products/1');
+            let userDataRes=await userResponse.json();
+            console.log(userDataRes);
+         }
+        userData();
+        
+        //  async await using try catch
+
+        async function ProductDetail(){
+            try{
+            let proRes=await fetch('https://fakestoreapi.com/products/1');
+            let proResData=await proRes.json();
+            console.log(proResData);
+        }
+        catch(error){
+            console.log("not valid data" + error);
+        }
+    }
+        ProductDetail();
+    
+
+
+
+
+
+
+        </script>
+</body>
+</html>
